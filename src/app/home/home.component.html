@@ -1,0 +1,249 @@
+<main>
+  <div
+    class="relative pt-16 pb-32 flex content-center items-center justify-center"
+    style="min-height: 75vh"
+  >
+    <div
+      class="absolute top-0 w-full h-full bg-center bg-cover"
+      style="
+        background-image: url('https://plus.unsplash.com/premium_photo-1672114874404-735367507e40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80');
+      "
+    >
+      <span
+        id="blackOverlay"
+        class="w-full h-full absolute opacity-75 bg-black"
+      ></span>
+    </div>
+    <div class="container relative mx-auto">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+          <div class="pr-12">
+            <h1 class="text-white font-semibold text-5xl">
+              let's play spin Wheel Game
+            </h1>
+            <p class="mt-4 text-lg text-gray-300">
+              A spin wheel game is a popular game of chance where players spin a
+              wheel to determine their prize or outcome
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+      style="height: 70px"
+    >
+      <svg
+        class="absolute bottom-0 overflow-hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        version="1.1"
+        viewBox="0 0 2560 100"
+        x="0"
+        y="0"
+      >
+        <polygon
+          class="text-gray-300 fill-current"
+          points="2560 0 2560 100 0 100"
+        ></polygon>
+      </svg>
+    </div>
+  </div>
+  <section class="pb-20 bg-gray-300 -mt-24">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap">
+        <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+          >
+            <div class="px-4 py-5 flex-auto">
+              <div
+                class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
+              >
+                <i class="fas fa-award"></i>
+              </div>
+              <h6 class="text-xl font-semibold">Entertainment</h6>
+              <p class="mt-2 mb-4 text-gray-600">
+                Games are a form of entertainment that can help you relax and
+                unwind after a busy day. Playing games can be a fun and
+                enjoyable way to spend your free time.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-4/12 px-4 text-center">
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+          >
+            <div class="px-4 py-5 flex-auto">
+              <div
+                class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400"
+              >
+                <i class="fas fa-retweet"></i>
+              </div>
+              <h6 class="text-xl font-semibold">Socialization</h6>
+              <p class="mt-2 mb-4 text-gray-600">
+                Many games are designed to be played with others, which can help
+                improve social skills and promote teamwork. Multiplayer games
+                can be a great way to connect with others and build
+                relationships.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="pt-6 w-full md:w-4/12 px-4 text-center">
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+          >
+            <div class="px-4 py-5 flex-auto">
+              <div
+                class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400"
+              >
+                <i class="fas fa-fingerprint"></i>
+              </div>
+              <h6 class="text-xl font-semibold">Cognitive development</h6>
+              <p class="mt-2 mb-4 text-gray-600">
+                Games can help develop cognitive skills such as problem-solving,
+                critical thinking, and decision-making. These skills can be
+                useful in both personal and professional settings.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center mt-32">
+        <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+          <!-- <div
+            class="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100"
+          >
+            <i class="fas fa-user-friends text-xl"></i>
+          </div> -->
+          <h3 class="text-3xl mb-2 font-semibold leading-normal">
+            how to play Spin wheel game ?
+          </h3>
+          <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
+            Click on the spin wheel button to start the game.
+          </p>
+          <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
+            Wait for the wheel to spin and come to a stop. The section where the
+            wheel stops will determine your prize or outcome.
+          </p>
+          <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
+            If you are allowed to spin the wheel multiple times, repeat the
+            above steps until you have used up all your spins.
+          </p>
+        </div>
+        <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+          <div
+            class="relative flex flex-col min-w-0 break-words w-full mb-6 rounded-lg"
+          >
+            <ngx-wheel
+              #wheel
+              [width]="400"
+              [height]="400"
+              [spinDuration]="8"
+              [items]="items"
+              [innerRadius]="20"
+              [spinAmount]="10"
+              [textOrientation]="textOrientation"
+              [textAlignment]="textAlignment"
+              pointerStrokeColor="black"
+              pointerFillColor="gold"
+              [idToLandOn]="idToLandOn"
+              (onSpinStart)="before()"
+              (onSpinComplete)="after()"
+            ></ngx-wheel>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="relative py-20">
+    <div
+      class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+      style="height: 80px"
+    >
+      <svg
+        class="absolute bottom-0 overflow-hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        version="1.1"
+        viewBox="0 0 2560 100"
+        x="0"
+        y="0"
+      >
+        <polygon
+          class="text-white fill-current"
+          points="2560 0 2560 100 0 100"
+        ></polygon>
+      </svg>
+    </div>
+    <div class="container mx-auto px-4">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+          <img
+            alt="..."
+            class="max-w-full rounded-lg shadow-lg"
+            src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
+          />
+        </div>
+        <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
+          <div class="md:pr-12">
+            <div
+              class="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300"
+            >
+              <i class="fas fa-rocket text-xl"></i>
+            </div>
+            <h3 class="text-3xl font-semibold">A growing company</h3>
+            <p class="mt-4 text-lg leading-relaxed text-gray-600">
+              The extension comes with three pre-built pages to help you get
+              started faster. You can change the text and images and you're good
+              to go.
+            </p>
+            <ul class="list-none mt-6">
+              <li class="py-2">
+                <div class="flex items-center">
+                  <div>
+                    <span
+                      class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
+                      ><i class="fas fa-fingerprint"></i
+                    ></span>
+                  </div>
+                  <div>
+                    <h4 class="text-gray-600">Carefully crafted components</h4>
+                  </div>
+                </div>
+              </li>
+              <li class="py-2">
+                <div class="flex items-center">
+                  <div>
+                    <span
+                      class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
+                      ><i class="fab fa-html5"></i
+                    ></span>
+                  </div>
+                  <div>
+                    <h4 class="text-gray-600">Amazing page examples</h4>
+                  </div>
+                </div>
+              </li>
+              <li class="py-2">
+                <div class="flex items-center">
+                  <div>
+                    <span
+                      class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
+                      ><i class="far fa-paper-plane"></i
+                    ></span>
+                  </div>
+                  <div>
+                    <h4 class="text-gray-600">Dynamic components</h4>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
