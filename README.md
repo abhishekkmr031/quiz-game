@@ -5,15 +5,16 @@ This project is a simplified front end of wheelgame. It was created with Angular
 ### TODO's
 
 - [ ] Design a page wheel game 
-- [ ] skip button if user is not avalible 
-- [ ] chnage a question if question is repeat or always give uniq question 
-- [ ] mugic chnage option and and mute audio option avalible there
+- [ ] Skip button if user is not avalible 
+- [ ] Chnage a question if question is repeat or always give uniq question 
+- [ ] Music chnage option and and mute audio option avalible there
 - [ ] Create a page for adding user and questions 
 - [ ] Create user account page
 - [ ] Write unit test cases for components 
 - [x] Create a landing page for game 
 - [x] Implement a ngx-wheel with start button it's start
 
+Before creating any UI chnage create mockup for file and get approvel form any team member then you will start work
 ### TODO's backend 
 
 - [ ] Implement node js backend 
@@ -53,12 +54,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-according to this image we need to devide a components 
-![image](https://user-images.githubusercontent.com/16557259/231960003-300209f9-7e72-411f-abda-09d56ff55a82.png)
-
-Task for Abhishek 
-![image](https://user-images.githubusercontent.com/16557259/234060251-65cf1b7a-b276-4021-95d4-2dcfbbddae02.png)
 
 
 1 Fork a git repo ( https://docs.github.com/en/get-started/quickstart/fork-a-repo )
