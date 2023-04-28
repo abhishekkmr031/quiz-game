@@ -4,11 +4,11 @@ This project is a simplified front end of wheelgame. It was created with Angular
 
 ### TODO's
 
-- [ ] Design a page wheel game 
+- [ ] Design a page wheel game  :- Shekhar 
 - [ ] Skip button if user is not avalible 
 - [ ] Chnage a question if question is repeat or always give uniq question 
-- [ ] Music chnage option and and mute audio option avalible there
-- [ ] Create a page for adding user and questions 
+- [ ] Music chnage option and and mute audio option avalible there   :-Ram 
+- [ ] Create a page for adding user and questions with good design   :-Abhishek 
 - [ ] Create user account page
 - [ ] Write unit test cases for components 
 - [x] Create a landing page for game 
