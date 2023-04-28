@@ -1,6 +1,34 @@
 # WheelGame
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
+This project is a simplified front end of wheelgame. It was created with Angular and tailwind.Feel free to contribute!
+
+### TODO's
+
+- [ ] Design a page wheel game 
+- [ ] skip button if user is not avalible 
+- [ ] chnage a question if question is repeat or always give uniq question 
+- [ ] mugic chnage option and and mute audio option avalible there
+- [ ] Create a page for adding user and questions 
+- [ ] Create user account page
+- [ ] Write unit test cases for components 
+- [x] Create a landing page for game 
+- [x] Implement a ngx-wheel with start button it's start
+
+### TODO's backend 
+
+- [ ] Implement node js backend 
+- [ ] Create end point api for add questions 
+- [ ] Create end point api for users (players)
+- [ ] Create a schema for mongo db and host mongo server 
+
+### Tools used
+
+- Angular
+- Tailwind
+- Typescript 
+- Express js 
+- Node js   TODO's
+- Mongo Db  TODO's
 
 ## Development server
 
