@@ -1,0 +1,122 @@
+<div class="myContainer justify-items-end">
+
+  <div class="mx-4 h-8 w-40 border-2 border-solid border-black ">
+    left side
+  </div>
+
+  <div class="mx-4 h-40 border-2 border-solid border-black ">
+    <div class="flex border-2 border-solid border-black">
+      <ul >
+        <button class="hover:bg-slate-600 border-1 border-solid border-blue-600 mx-3px" (click)="displayNameSection('#nameSection')">Enter Name</button>
+      </ul>
+      <ul >
+        <button class="hover:bg-slate-500 border-sky-100 mx-3px" (click)="displayNameSection('#questionSection')">Enter Questions</button>
+      </ul>
+    </div>
+    <div id="#nameSection" class="hidden">
+      <!-- <div class="name">
+        <div> -->
+          <div>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Save</th>
+                </tr>
+                <tr>
+                    <td><label>Enter Name : </label></td>
+                    <td><input type="text" name="inputName" [(ngModel)]="inputName" class="border-1 border-solid border-bl
+                      "/></td>
+                    <td><input type="button" value="Save Name" (click)="saveName()"
+                            style="background-color: chartreuse;" /></td>
+                </tr>
+            </table>
+          </div>
+          <div>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Edit Name</th>
+                    <th>Delete Name</th>
+                </tr>
+                <tr *ngFor="let name of namesList.collection">
+                    <td>{{name.id}}</td>
+                    <td>{{name.value}}</td>
+                    <td><input type="button" (click)="editName(name)" value="Edit Name" /></td>
+                    <td><input type="button" (click)="deleteName(name)" value="Delete Name" /></td>
+                </tr>
+            </table>
+          </div>
+        <!-- </div>
+    </div> -->
+    </div>
+    <div id="#questionSection" class="hidden">
+      <div class="question">
+
+        <div>
+            <table>
+                <tr>
+                    <th>Question</th>
+                    <th>Save Question</th>
+                </tr>
+                <tr>
+                    <td><label>Enter Question : </label></td>
+                    <td><input type="text" name="inputName" [(ngModel)]="inputQuestion" /></td>
+                    <td><input type="button" value="Save Question" (click)="saveQuestion()"
+                            style="background-color: chartreuse;" /></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Question</th>
+                    <th>Edit Question</th>
+                    <th>Delete Question</th>
+                </tr>
+                <tr *ngFor="let question of questionList.collection">
+                    <td>{{question.id}}</td>
+                    <td>{{question.value}}</td>
+                    <td><input type="button" (click)="editQuestion(question)" value="Edit Question" /></td>
+                    <td><input type="button" (click)="deleteQuestion(question)" value="Delete Question" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+<!-- will use it again-->
+<!-- 
+<main class="game">
+  
+  <div>
+    <input type="button" (click)="spinWheel()" value=" Spin Wheel" />
+  </div>
+  <div *ngIf="namedata.collection.length>0 && questionData.collection.length>0; else elseBlock">
+    <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+      <div class="relative flex flex-col min-w-0 break-words w-full mb-6 rounded-lg">
+        <ngx-wheel #wheel [width]="400" [height]="400" [spinDuration]="4" [items]="wheelContentItems" [innerRadius]="20"
+          [spinAmount]="10" [textOrientation]="textOrientation" [textAlignment]="textAlignment"
+          pointerStrokeColor="black" pointerFillColor="gold" [idToLandOn]="idToLandOn" (onSpinStart)="before()"
+          (onSpinComplete)="after()"></ngx-wheel>
+      </div>
+    </div>
+    <div class="questionPopup" name="divquestionPopup" visible=[isQuestionVisible]>
+      {{questionToDisplay}}
+    </div>
+  </div>
+
+  <ng-template #elseBlock>
+    <div class="gameOver">
+      <h2> Game Over!</h2>
+    </div>
+  </ng-template>
+</main> -->

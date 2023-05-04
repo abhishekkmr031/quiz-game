@@ -60,3 +60,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 2 create a branch 
 3 create a pr 
 4 once pr will approve merge your code 
+
+
+
+//npm i @angular-devkit/build-angular@12.2.13 --force
