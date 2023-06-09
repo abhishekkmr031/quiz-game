@@ -1,4 +1,29 @@
-<main>
+<section class="relative flex mx-auto my-auto ml-10">
+    <div class="question  p-2 border-2 border-solid border-black">
+        <div class="entrybox flex justify-between items-center p-2">
+            <textarea class="w-4/5 h-16 p-2 text-xl border-2 border-solid border-black" name="inputName"
+                [(ngModel)]="inputQuestion" rows="4" cols="50"></textarea>
+            <i class="fa fa-regular fa-floppy-disk text-3xl" (click)="saveQuestion()"></i>
+        </div>
+        <ul class="flex items-center h-8 text-xl" *ngFor="let question of questionList.collection">
+            <p class="break-words">{{question.value}}</p>
+            <i class="fa-regular fa-pen-to-square ml-2" (click)="editQuestion(question)"></i>
+            <i class="fa fa-regular fa-trash  mx-2" (click)="deleteQuestion(question)"></i>
+        </ul>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <main>
     <div class="relative flex content-center items-center justify-center">
         <div class="gap-2 columns-2">
             <div class="question">
@@ -11,8 +36,9 @@
                         </tr>
                         <tr>
                             <td><label>Enter Question : </label></td>
-                            <td><input type="text" name="inputName" [(ngModel)]="inputQuestion" /></td>
-                            <td><input type="button" value="Save Question" (click)="saveQuestion()"
+                            <td></td>
+                            <td></td>
+                            <td><input type="button" value="Save Question" 
                                     style="background-color: chartreuse;" /></td>
                         </tr>
                     </table>
@@ -27,8 +53,8 @@
                         <tr *ngFor="let question of questionList.collection">
                             <td>{{question.id}}</td>
                             <td>{{question.value}}</td>
-                            <td><input type="button" (click)="editQuestion(question)" value="Edit Question" /></td>
-                            <td><input type="button" (click)="deleteQuestion(question)" value="Delete Question" /></td>
+                            <td><i class="fa fa-regular fa-pencil" (click)="editQuestion(question)"></i></td>
+                            <td><i class="fa fa-regular fa-trash" (click)="deleteQuestion(question)"></i></td>
                         </tr>
                     </table>
                 </div>
@@ -69,4 +95,4 @@
         </div>
 
     </div>
-</main>
+</main> -->
