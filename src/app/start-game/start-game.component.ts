@@ -81,8 +81,8 @@ export class StartGameComponent implements OnInit {
 
   items: any[] = [];
   sound = new Howl({
-    src: [
-      'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3',
+    src: [""
+      //'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3',
     ],
   });
 

@@ -12,10 +12,11 @@ import { HomeComponent } from './home/home.component';
 import { ManagementComponentComponent } from './wheelGame/management-component/management-component.component';
 import { GameComponentComponent } from './wheelGame/game-component/game-component.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, ContentComponent, StartGameComponent, HomeComponent, ManagementComponentComponent, GameComponentComponent],
-  imports: [BrowserModule, AppRoutingModule, NgxWheelModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, NgxWheelModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

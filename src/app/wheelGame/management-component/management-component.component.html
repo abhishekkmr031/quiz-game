@@ -1,98 +1,24 @@
-<section class="relative flex mx-auto my-auto ml-10">
-    <div class="question  p-2 border-2 border-solid border-black">
+<section class="relative flex w-full m-5 p-5">
+    <div id="loading-animation">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <div class="question w-full m-5 p-5 shadow-inner shadow-gray-400">
         <div class="entrybox flex justify-between items-center p-2">
-            <textarea class="w-4/5 h-16 p-2 text-xl border-2 border-solid border-black" name="inputName"
-                [(ngModel)]="inputQuestion" rows="4" cols="50"></textarea>
-            <i class="fa fa-regular fa-floppy-disk text-3xl" (click)="saveQuestion()"></i>
+            <textarea class="w-3/5 h-16 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200" name="inputName"
+                [(ngModel)]="inputQuestion" rows="4" cols="50" placeholder='Enter "Question" here ...'
+                title='Enter Question to add it to game'></textarea>
+            <input type="text" name="topic" class="w-80 h-14 p-1 pl-2 text-lg border-4 rounded-sm shadow-inner shadow-gray-500 hover:bg-slate-200"
+                [(ngModel)]="inputTopic" placeholder="Topic name ..." title="Enter topic name where question belongs to" />
+            <button class="p-2 border-4 rounded-sm shadow-inner shadow-gray-500 hover:bg-slate-200">
+                <i class="fa fa-regular fa-floppy-disk text-3xl" (click)="saveQuestion()"></i>
+            </button>
         </div>
-        <ul class="flex items-center h-8 text-xl" *ngFor="let question of questionList.collection">
-            <p class="break-words">{{question.value}}</p>
+        <ul class="flex items-center h-8 text-xl" *ngFor="let question of questionList">
+            <p class="rounded-sm shadow-sm shadow-gray-200 ">{{question.question}}</p>
             <i class="fa-regular fa-pen-to-square ml-2" (click)="editQuestion(question)"></i>
             <i class="fa fa-regular fa-trash  mx-2" (click)="deleteQuestion(question)"></i>
         </ul>
     </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-<!-- <main>
-    <div class="relative flex content-center items-center justify-center">
-        <div class="gap-2 columns-2">
-            <div class="question">
-
-                <div>
-                    <table>
-                        <tr>
-                            <th>Question</th>
-                            <th>Save Question</th>
-                        </tr>
-                        <tr>
-                            <td><label>Enter Question : </label></td>
-                            <td></td>
-                            <td></td>
-                            <td><input type="button" value="Save Question" 
-                                    style="background-color: chartreuse;" /></td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <th>ID</th>
-                            <th>Question</th>
-                            <th>Edit Question</th>
-                            <th>Delete Question</th>
-                        </tr>
-                        <tr *ngFor="let question of questionList.collection">
-                            <td>{{question.id}}</td>
-                            <td>{{question.value}}</td>
-                            <td><i class="fa fa-regular fa-pencil" (click)="editQuestion(question)"></i></td>
-                            <td><i class="fa fa-regular fa-trash" (click)="deleteQuestion(question)"></i></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="name">
-                <div>
-                    <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Save</th>
-                        </tr>
-                        <tr>
-                            <td><label>Enter Name : </label></td>
-                            <td><input type="text" name="inputName" [(ngModel)]="inputName" /></td>
-                            <td><input type="button" value="Save Name" (click)="saveName()"
-                                    style="background-color: chartreuse;" /></td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Edit Name</th>
-                            <th>Delete Name</th>
-                        </tr>
-                        <tr *ngFor="let name of namesList.collection">
-                            <td>{{name.id}}</td>
-                            <td>{{name.value}}</td>
-                            <td><input type="button" (click)="editName(name)" value="Edit Name" /></td>
-                            <td><input type="button" (click)="deleteName(name)" value="Delete Name" /></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</main> -->

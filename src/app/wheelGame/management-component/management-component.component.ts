@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { questionModel } from './questionModel';
-import { GameService } from '../service/game.service';
-import { commonGameUtilityCollectionClass } from '../common/myclass';
-import { nameClass } from '../common/nameClass';
-import { commonModel } from '../common/commonModel';
-import { questionClass } from '../common/questionClass';
+import { GameServiceApi } from '../service/game-service-api.service';
+import { quizData } from '../service/quizData';
 
 @Component({
   selector: 'app-management-component',
@@ -12,77 +8,73 @@ import { questionClass } from '../common/questionClass';
   styleUrls: ['./management-component.component.scss']
 })
 export class ManagementComponentComponent implements OnInit {
-  // public questionList: questionModel[] = [];
-  
 
-
-
-  //#region namesOperation
-  public inputName: string = "";
-  public inputNameId: number = -1;
-  public namesList: nameClass;
-
-  saveName() {
-    if (this.inputNameId === -1) {
-      this.namesList.addNew(this.inputName);
-    }
-    else {
-      this.namesList.edit({ id: this.inputNameId, value: this.inputName });
-    }
-
-    this.resetForm();
-  }
-
-  editName(name:commonModel){
-    this.inputNameId = name.id;
-    this.inputName = name.value;
-  }
-
-  deleteName(name: commonModel) {
-    this.namesList.remove({ id: name.id, value: name.value });
-  }
-  //#endregion namesOperation
-
-  //#region QuestionOperations
   public inputQuestion: string = "";
+  public inputTopic:string = "";
   public inputQuestionId: number = -1;
-  public questionList: questionClass;
-  
-  saveQuestion() {
-    if (this.inputQuestionId === -1) {
-      this.questionList.addNew(this.inputQuestion);
-    }
-    else {
-      this.questionList.edit({ id: this.inputQuestionId, value: this.inputQuestion });
+  public questionList: quizData[] = [];
+
+  saveQuestion(){
+    if(this.IsNullInput()) alert("Please enter Question and Topic Value to Save");
+    else{
+      let loadingAnimation = document.getElementById("loading-animation");
+      if(loadingAnimation != undefined) loadingAnimation.style.display = "block";
+      if(this.inputQuestionId == -1){
+        console.log("-1 saving");
+        let calculatedId = this.questionList.concat().pop()?.id;
+        if(calculatedId!=undefined)this.service.pushData({id:calculatedId+1, topic:this.inputTopic, question:this.inputQuestion })
+        .subscribe(data=>{
+          console.log(data);
+          this.getQuestion();
+          if(loadingAnimation != undefined) loadingAnimation.style.display = "none";
+        });
+      }
+      else
+        this.service.putData({id:this.inputQuestionId, topic:this.inputTopic, question:this.inputQuestion })
+        .subscribe(data=>{
+          console.log(data);
+          this.getQuestion();
+          if(loadingAnimation != undefined) loadingAnimation.style.display = "none";
+        });
     }
 
-    this.resetForm();
+    this.resetForm();       
   }
 
-  editQuestion(question: commonModel){
+  editQuestion(question:quizData){
+    this.inputQuestion = question.question
+    this.inputTopic = question.topic
     this.inputQuestionId = question.id;
-    this.inputQuestion = question.value;
   }
 
-  deleteQuestion(question: commonModel) {
-    this.questionList.remove({ id: question.id, value: question.value });
+  deleteQuestion(question:quizData){
+    this.service.deleteData(question).subscribe(data=>{
+      console.log(data);
+      this.getQuestion();
+    });
   }
-  //#endregion
+
 
   private resetForm() {
     this.inputQuestion = "";
+    this.inputTopic = "";
     this.inputQuestionId = -1;
-
-    this.inputName = "";
-    this.inputNameId = -1;
   }
 
-  constructor(private service: GameService = new GameService()) {
-    this.questionList = new questionClass();
-    this.namesList = new nameClass();
+  IsNullInput():boolean{
+    if(this.inputQuestion==="" || this.inputTopic==="") return true;
+    return false;
   }
 
-  ngOnInit(): void {
+  constructor(private service: GameServiceApi) {}
+
+  ngOnInit(): void { 
+    this.getQuestion();
+  }
+  
+  getQuestion(){
+    this.service.getData()
+    .subscribe(data=>this.questionList = data);
   }
 
 }
