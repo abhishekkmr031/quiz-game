@@ -1,6 +1,6 @@
-export interface quizData{
-    id:number,
-    topic:string,
-    question:string,
-    flag:boolean
+export interface quizData {
+    id: number,
+    topic: string,
+    question: string,
+    flag: boolean
 }

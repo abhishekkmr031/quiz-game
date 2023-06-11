@@ -1,24 +1,30 @@
-<section class="relative flex w-full m-5 p-5">
-    <div id="loading-animation">
-        <div class="spinner"></div>
-        <p>Loading...</p>
-    </div>
-
-    <div class="question w-full m-5 p-5 shadow-inner shadow-gray-400">
-        <div class="entrybox flex justify-between items-center p-2">
-            <textarea class="w-3/5 h-16 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200" name="inputName"
-                [(ngModel)]="inputQuestion" rows="4" cols="50" placeholder='Enter "Question" here ...'
+<section class="relative flex-col w-full m-5 p-5">    
+    <div id="question" class=" relative w-full m-5 p-5 h-full shadow-inner shadow-gray-400">
+        <div id="#modal" class="hidden inset-0 bg-gray-400 bg-opacity-30 items-center justify-center">
+            <div class="p-8 shadow-xl shadow-gray-400">
+                <div id="loading-animation" class="backgroundLightRed">
+                    <div class="spinner"></div>
+                    <p>Loading...</p>
+                </div>
+            </div>
+        </div>
+        <div id="#inputArea" class="inputArea flex justify-between items-center p-2">
+            <textarea class="w-3/5 h-20 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
+                name="inputName" [(ngModel)]="inputQuestion" rows="4" cols="50" placeholder='Enter "Question" here ...'
                 title='Enter Question to add it to game'></textarea>
-            <input type="text" name="topic" class="w-80 h-14 p-1 pl-2 text-lg border-4 rounded-sm shadow-inner shadow-gray-500 hover:bg-slate-200"
-                [(ngModel)]="inputTopic" placeholder="Topic name ..." title="Enter topic name where question belongs to" />
+            <textarea class="w-80 h-20 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
+                name="topic" [(ngModel)]="inputTopic" rows="4" cols="25" placeholder='Topic name ...'
+                title='Enter topic name where question belongs to'></textarea>
             <button class="p-2 border-4 rounded-sm shadow-inner shadow-gray-500 hover:bg-slate-200">
-                <i class="fa fa-regular fa-floppy-disk text-3xl" (click)="saveQuestion()"></i>
+                <i class="fa fa-regular fa-floppy-disk text-3xl cursor-pointer" (click)="saveQuestion()"></i>
             </button>
         </div>
-        <ul class="flex items-center h-8 text-xl" *ngFor="let question of questionList">
-            <p class="rounded-sm shadow-sm shadow-gray-200 ">{{question.question}}</p>
-            <i class="fa-regular fa-pen-to-square ml-2" (click)="editQuestion(question)"></i>
-            <i class="fa fa-regular fa-trash  mx-2" (click)="deleteQuestion(question)"></i>
-        </ul>
+        <div class="questionList backgroundLightRed">
+            <ul class="flex items-center h-8 text-xl" *ngFor="let question of questionList">
+                <p class="rounded-sm shadow-sm shadow-gray-200 ">{{question.question}}</p>
+                <i class="fa-regular fa-pen-to-square ml-2 cursor-pointer" (click)="editQuestion(question)"></i>
+                <i class="fa fa-regular fa-trash  mx-2 cursor-pointer" (click)="deleteQuestion(question)"></i>
+            </ul>
+        </div>
     </div>
 </section>

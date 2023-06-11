@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { quizData } from './quizData';
 import { Observable } from 'rxjs/internal/Observable';
 import { questionModelAPI } from '../service//questionModelAPI';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { questionModelAPI } from '../service//questionModelAPI';
 export class GameServiceApi {
 
   quizCollections: quizData[] = [];
-  apiUrl: string = "https://wheel-api.onrender.com/questions";
+  apiUrl: string = environment._apiUrl;
 
   getData(): Observable<quizData[]> {
     return this.httpClient.get<quizData[]>(this.apiUrl);
@@ -20,12 +21,12 @@ export class GameServiceApi {
     return this.httpClient.post<questionModelAPI>(this.apiUrl, record);
   }
 
-  
+
   putData(record: questionModelAPI): Observable<questionModelAPI> {
     return this.httpClient.put<questionModelAPI>(this.apiUrl, record);
   }
 
-  deleteData(record: quizData):Observable<questionModelAPI> {
+  deleteData(record: quizData): Observable<questionModelAPI> {
     return this.httpClient.delete<questionModelAPI>(this.apiUrl + "/" + record.id);
   }
 

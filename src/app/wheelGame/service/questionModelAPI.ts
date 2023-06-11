@@ -1,5 +1,5 @@
-export interface questionModelAPI{
-    id:number,
-    topic:string,
-    question:string
+export interface questionModelAPI {
+    id: number,
+    topic: string,
+    question: string
 }
