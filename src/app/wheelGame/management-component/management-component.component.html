@@ -1,158 +1,80 @@
-<<<<<<< HEAD
 <section class="relative flex-col w-full m-5 p-5">
-    <div id="question" class=" relative w-full m-5 p-5 h-full shadow-inner shadow-gray-400">
-        <div id="#modal" class="hidden z-50 inset-0 bg-gray-400 bg-opacity-30 items-center justify-center">
-            <div class="p-8 shadow-xl shadow-gray-400">
-                <div id="loading-animation" class="backgroundLightRed">
-                    <div class="spinner"></div>
-                    <p>Loading...</p>
-=======
+  <div
+    id="question"
+    class="relative w-full m-5 p-5 h-full shadow-inner shadow-gray-400"
+  >
+    <div
+      id="#modal"
+      class="hidden z-50 inset-0 bg-gray-400 bg-opacity-30 items-center justify-center"
+    >
+      <div class="p-8 shadow-xl shadow-gray-400">
+        <div id="loading-animation" class="backgroundLightRed">
+          <div class="spinner"></div>
 
-<section class="relative flex-col w-full m-5 p-5">
-    <div id="question" class=" relative w-full m-5 p-5 h-full shadow-inner shadow-gray-400">
-        <div id="#modal" class="hidden z-50 inset-0 bg-gray-400 bg-opacity-30 items-center justify-center">
-            <div class="p-8 shadow-xl shadow-gray-400">
-                <div id="loading-animation" class="backgroundLightRed">
-                    <div class="spinner"></div>
-                    <p>Loading...</p>
-
-<section class="relative flex mx-auto my-auto ml-10">
-    <div class="question  p-2 border-2 border-solid border-black">
-        <div class="entrybox flex justify-between items-center p-2">
-            <textarea class="w-4/5 h-16 p-2 text-xl border-2 border-solid border-black" name="inputName"
-                [(ngModel)]="inputQuestion" rows="4" cols="50"></textarea>
-            <i class="fa fa-regular fa-floppy-disk text-3xl" (click)="saveQuestion()"></i>
+          <p>Loading...</p>
         </div>
-        <ul class="flex items-center h-8 text-xl" *ngFor="let question of questionList.collection">
-            <p class="break-words">{{question.value}}</p>
-            <i class="fa-regular fa-pen-to-square ml-2" (click)="editQuestion(question)"></i>
-            <i class="fa fa-regular fa-trash  mx-2" (click)="deleteQuestion(question)"></i>
-        </ul>
+      </div>
     </div>
-</section>
 
+    <div
+      id="#inputArea"
+      class="inputArea flex justify-between items-center p-2"
+    >
+      <textarea
+        class="w-3/5 h-20 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
+        name="inputName"
+        [(ngModel)]="inputQuestion"
+        rows="4"
+        cols="50"
+        placeholder='Enter "Question" here ...'
+        title="Enter Question to add it to game"
+      ></textarea>
 
+      <textarea
+        class="w-80 h-20 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
+        name="topic"
+        [(ngModel)]="inputTopic"
+        rows="4"
+        cols="25"
+        placeholder="Topic name ..."
+        title="Enter topic name where question belongs to"
+      ></textarea>
 
-
-
-
-
-
-
-
-
-
-    <div class="relative flex content-center items-center justify-center">
-        <div class="gap-2 columns-2">
-            <div class="question">
-
-                <div>
-                    <table>
-                        <tr>
-                            <th>Question</th>
-                            <th>Save Question</th>
-                        </tr>
-                        <tr>
-                            <td><label>Enter Question : </label></td>
-                            <td></td>
-                            <td></td>
-                            <td><input type="button" value="Save Question" 
-                                    style="background-color: chartreuse;" /></td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <th>ID</th>
-                            <th>Question</th>
-                            <th>Edit Question</th>
-                            <th>Delete Question</th>
-                        </tr>
-                        <tr *ngFor="let question of questionList.collection">
-                            <td>{{question.id}}</td>
-                            <td>{{question.value}}</td>
-                            <td><i class="fa fa-regular fa-pencil" (click)="editQuestion(question)"></i></td>
-                            <td><i class="fa fa-regular fa-trash" (click)="deleteQuestion(question)"></i></td>
-                        </tr>
-                    </table>
-
->>>>>>> 67462935b7392a46b0d95067071ad1d83b5e56be
-                </div>
-            </div>
-<<<<<<< HEAD
-        </div>
-        <div id="#inputArea" class="inputArea flex justify-between items-center p-2">
-            <textarea class="w-3/5 h-20 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
-                name="inputName" [(ngModel)]="inputQuestion" rows="4" cols="50" placeholder='Enter "Question" here ...'
-                title='Enter Question to add it to game'></textarea>
-            <textarea class="w-80 h-20 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
-                name="topic" [(ngModel)]="inputTopic" rows="4" cols="25" placeholder='Topic name ...'
-                title='Enter topic name where question belongs to'></textarea>
-=======
-        </div>
-        <div id="#inputArea" class="inputArea flex justify-between items-center p-2">
-            <textarea class="w-3/5 h-20 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
-                name="inputName" [(ngModel)]="inputQuestion" rows="4" cols="50" placeholder='Enter "Question" here ...'
-                title='Enter Question to add it to game'></textarea>
-            <textarea class="w-80 h-20 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
-                name="topic" [(ngModel)]="inputTopic" rows="4" cols="25" placeholder='Topic name ...'
-                title='Enter topic name where question belongs to'></textarea>
-            <button class="p-2 border-4 rounded-sm shadow-inner shadow-gray-500 hover:bg-slate-200">
-                <i class="fa fa-regular fa-floppy-disk text-3xl cursor-pointer" (click)="saveQuestion()"></i>
-            </button>
-        </div>
-        <div class="questionList max-h-[300px] overflow-y-auto my-7">
-            <table class="w-full">
-                <tr class="flex w-full items-center h-auto text-xl hover:bg-gray-700 hover:text-white" *ngFor="let question of questionList">
-                    <td class="shadow-inner shadow-black w-5/6 break-words ">
-                            {{question.question}}
-                    </td>
-                    <td class="shadow-inner shadow-black w-1/12"><i class="fa-regular fa-pen-to-square ml-2 cursor-pointer"
-                            (click)="editQuestion(question)"></i></td>
-                    <td class="shadow-inner shadow-black w-1/12"><i class="fa fa-regular fa-trash  mx-2 cursor-pointer"
-                            (click)="deleteQuestion(question)"></i></td>
->>>>>>> 67462935b7392a46b0d95067071ad1d83b5e56be
-
-<<<<<<< HEAD
-            <button class="p-2 border-4 rounded-sm shadow-inner shadow-gray-500 hover:bg-slate-200">
-                <i class="fa fa-regular fa-floppy-disk text-3xl cursor-pointer" (click)="saveQuestion()"></i>
-            </button>
-=======
-                </tr>
->>>>>>> 67462935b7392a46b0d95067071ad1d83b5e56be
-
-<<<<<<< HEAD
-=======
-            </table>
-
->>>>>>> 67462935b7392a46b0d95067071ad1d83b5e56be
-        </div>
-<<<<<<< HEAD
-
-        <div class="questionList max-h-[300px] overflow-y-auto my-7">
-            <table class="w-full">
-                <tr class="flex w-full items-center h-auto text-xl hover:bg-gray-700 hover:text-white"
-                    *ngFor="let question of questionList">
-                    <td class="shadow-inner shadow-black w-5/6 break-words ">
-                        {{question.question}}
-                    </td>
-                    <td class="shadow-inner shadow-black w-1/12"><i
-                            class="fa-regular fa-pen-to-square ml-2 cursor-pointer"
-                            (click)="editQuestion(question)"></i></td>
-                    <td class="shadow-inner shadow-black w-1/12"><i class="fa fa-regular fa-trash  mx-2 cursor-pointer"
-                            (click)="deleteQuestion(question)"></i></td>
-                </tr>
-            </table>
-        </div>
-=======
->>>>>>> 67462935b7392a46b0d95067071ad1d83b5e56be
+      <button
+        class="p-2 border-4 rounded-sm shadow-inner shadow-gray-500 hover:bg-slate-200"
+      >
+        <i
+          class="fa fa-regular fa-floppy-disk text-3xl cursor-pointer"
+          (click)="saveQuestion()"
+        ></i>
+      </button>
     </div>
-<<<<<<< HEAD
+
+    <div class="questionList max-h-[300px] overflow-y-auto my-7">
+      <table class="w-full">
+        <tr
+          class="flex w-full items-center h-auto text-xl hover:bg-gray-700 hover:text-white"
+          *ngFor="let question of questionList"
+        >
+          <td class="shadow-inner shadow-black w-5/6 break-words">
+            {{ question.question }}
+          </td>
+
+          <td class="shadow-inner shadow-black w-1/12">
+            <i
+              class="fa-regular fa-pen-to-square ml-2 cursor-pointer"
+              (click)="editQuestion(question)"
+            ></i>
+          </td>
+
+          <td class="shadow-inner shadow-black w-1/12">
+            <i
+              class="fa fa-regular fa-trash mx-2 cursor-pointer"
+              (click)="deleteQuestion(question)"
+            ></i>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </section>
-=======
-
-</section>
-
-
-
->>>>>>> 67462935b7392a46b0d95067071ad1d83b5e56be
