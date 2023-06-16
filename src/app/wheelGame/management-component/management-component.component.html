@@ -21,7 +21,7 @@
       class="inputArea flex justify-between items-center p-2"
     >
       <textarea
-        class="w-3/5 h-20 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
+        class="w-3/5 h-12 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
         name="inputName"
         [(ngModel)]="inputQuestion"
         rows="4"
@@ -31,12 +31,12 @@
       ></textarea>
 
       <textarea
-        class="w-80 h-20 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
+        class="w-80 h-12 p-2 text-lg border-4 shadow-inner shadow-gray-500 hover:bg-slate-200"
         name="topic"
         [(ngModel)]="inputTopic"
         rows="4"
         cols="25"
-        placeholder="Topic name ..."
+        placeholder="Choose a category"
         title="Enter topic name where question belongs to"
       ></textarea>
 
@@ -47,10 +47,11 @@
           class="fa fa-regular fa-floppy-disk text-3xl cursor-pointer"
           (click)="saveQuestion()"
         ></i>
+        SAVE
       </button>
     </div>
 
-    <div class="questionList max-h-[300px] overflow-y-auto my-7">
+    <div class="questionList my-7">
       <table class="w-full">
         <tr
           class="flex w-full items-center h-auto text-xl hover:bg-gray-700 hover:text-white"

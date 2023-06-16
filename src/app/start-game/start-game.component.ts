@@ -25,7 +25,6 @@ export class StartGameComponent implements OnInit {
     'Eldin Hulsman',
     'Lex Goudriaan',
     'Kenneth Mensink',
-
   ];
   colors = [
     'red',
@@ -83,8 +82,7 @@ export class StartGameComponent implements OnInit {
   selectedName = 'Player';
   selectedNames: string[] = [];
   isCollapsibleOpen = false;
-  newName! : string;
-
+  newName!: string;
 
   constructor() {}
 
@@ -92,7 +90,7 @@ export class StartGameComponent implements OnInit {
     this.assignNames();
   }
 
-  assignNames(){
+  assignNames() {
     this.idToLandOn = Math.floor(Math.random() * this.names.length);
     this.items = this.names.map((value, index) => ({
       fillStyle: this.colors[index % this.colors.length],
@@ -170,23 +168,22 @@ export class StartGameComponent implements OnInit {
     this.sound.unload();
     this.getRandomQuestion();
   }
-  editName(id:any){
+  editName(id: any) {
     this.newName = this.names[id];
     this.names.splice(id, 1)[0];
     this.assignNames();
   }
 
-  deleteName(id:any){
+  deleteName(id: any) {
     this.names.splice(id++, 1)[0];
     this.assignNames();
     this.reset();
     this.idToLandOn = Math.floor(Math.random() * this.names.length);
   }
-  addName(name:any){
+  addName(name: any) {
     this.names.push(name);
     this.reset();
     this.assignNames();
     this.idToLandOn = Math.floor(Math.random() * this.names.length);
-
   }
 }

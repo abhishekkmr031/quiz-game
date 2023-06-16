@@ -43,27 +43,16 @@
  
 
 .circle2{
-
     position: absolute;
-
     z-index: -1;
-
-    bottom:-300px;
-
+    bottom: 0px;
     left: 200px;
-
-    height: 600px;
-
-    width: 600px;
-
+    height: 435px;
+    width: 521px;
     border-radius: 50% 50% 0px 0px;
-
     background: rgba(231, 227, 34, 0.468);
-
-    background: linear-gradient(90deg, rgb(249, 195, 109) 0%, rgba(238, 183, 96, 0.7) 19%, rgba(185,143,75,.5) 65%, rgba(222, 185, 136, 0.3) 94%, rgba(234, 199, 144, 0.1) 100%); 
-
-    background: radial-gradient(circle, rgb(236, 234, 189) 0%, rgb(239, 231, 92) 19%, rgba(186, 176, 135, 0.986) 65%, rgba(229, 221, 207, 0.4) 94%, rgba(235, 196, 137, 0.2) 100%);
-
+    background: linear-gradient(90deg, #f9c36d 0%, rgba(238, 183, 96, 0.7) 19%, rgba(185, 143, 75, 0.5) 65%, rgba(222, 185, 136, 0.3) 94%, rgba(234, 199, 144, 0.1) 100%);
+    background: radial-gradient(circle, #eceabd 0%, #efe75c 19%, rgba(186, 176, 135, 0.986) 65%, rgba(229, 221, 207, 0.4) 94%, rgba(235, 196, 137, 0.2) 100%);
     opacity: 60%;
 
 }

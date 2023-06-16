@@ -1,185 +1,147 @@
-<main class="bg-black">
-  <div class="relative flex content-center items-center justify-center">
-    <div class="absolute top-2 w-full h-full bg-center bg-cover">
-      <span id="blackOverlay" class="w-full h-full absolute bg-black"></span>
-      <span id="blackOverlay" class="w-full h-full absolute bg-black"></span>
-    </div>
-    <div class="container relative mx-auto">
-      <div class="items-center flex flex-wrap">
-        <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-          <div class="pr-12">
-            <h1 class="text-white font-semibold text-5xl">
-              Let's play spin Wheel Game
-            </h1>
-            <p class="mt-4 text-base text-red-300">
-
-              A spin wheel game is a popular game of chance where players spin a
-              wheel to determine their Question of the day
-            </p>
+<button
+  class="hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mx-2 my-2"
+>
+  <i class="fa-sharp fa-light fa-gear-complex"></i>
+</button>
+<section class="relative py-20">
+  <div class="a circle1"></div>
+  <div class="a circle2"></div>
+  <div class="flex">
+    <div class="absolute">
+      <!-- Collapsible Button -->
+      <button
+        class="bg-gray-600 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mx-4 my-2"
+        id="collapsibleButton"
+        (click)="toggleCollapsible()"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <!-- Collapsible Content -->
+      <div
+        *ngIf="isCollapsibleOpen"
+        class="overflow-hidden transition-height duration-300 py-2 px-4 rounded mx-4 my-2"
+        [ngClass]="{
+          'h-0 w-0': !isCollapsibleOpen,
+          'h-auto w-auto': isCollapsibleOpen
+        }"
+      >
+        <div>
+          <div>
+            <div>
+              <div class="flex flex-row justify-start">
+                <input
+                  #nameInput
+                  id="nameInput"
+                  type="text"
+                  [(ngModel)]="newName"
+                  class="border border-gray-400 rounded py-2 px-1 mt-4"
+                  placeholder="Add Name Here"
+                />
+                <button class="relative">
+                  <input
+                    type="color"
+                    class="rounded-full h-10 w-10 py-2 px-1 mt-4"
+                  />
+                </button>
+                <button
+                  class="bg-gray-600 hover:bg-gray-800 text-white font-bold rounded pl-2 py-2 px-1 mt-4"
+                  (click)="addName(nameInput.value); nameInput.value = ''"
+                >
+                  <i class="fa-solid fa-user-plus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="mt-2 max-h-64 overflow-y-scroll">
+              <h2 class="text-xl font-semibold mx-4"></h2>
+              <ul class="px-2">
+                <li
+                  *ngFor="let name of names; let i = index"
+                  class="flex items-end justify-between"
+                >
+                  <span
+                    class="border border-black-300 ml-1 rounded py-0 px-1"
+                    >{{ name }}</span
+                  >
+                  <div class="flex">
+                    <button
+                      class="hover:bg-blue-500 text-white-500 ml-1 border rounded py-0 px-1"
+                    >
+                      <input type="color" class="rounded-full h-5 w-5" />
+                    </button>
+                    <button
+                      class="hover:bg-blue-500 text-white-500 ml-1 border rounded py-0 px-1"
+                      (click)="editName(i)"
+                    >
+                      <i class="fa-solid fa-user-pen"></i>
+                    </button>
+                    <button
+                      class="hover:bg-red-600 text-white-500 ml-1 border rounded py-0 px-1"
+                      (click)="deleteName(i)"
+                    >
+                      <i class="fa-sharp fa-solid fa-trash"></i>
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <button class="hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mx-2 my-2">
-    <i class="fa-sharp fa-light fa-gear-complex"></i>
-  </button>
-  <section class="relative py-20">
-    <div class="a circle1"></div>
-    <div class="a circle2"></div>
-    <div class="flex">
-      <div class="absolute">
-        <!-- Collapsible Button -->
-        <button
-          class="bg-gray-600 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mx-4 my-2"
-          id="collapsibleButton"
-          (click)="toggleCollapsible()"
-        >
-        <i class="fa-solid fa-bars"></i>
-        </button>
-        <!-- Collapsible Content -->
-        <div
-          *ngIf="isCollapsibleOpen"
-          class="overflow-hidden transition-height duration-300 py-2 px-4 rounded mx-4 my-2"
-          [ngClass]="{
-            'h-0 w-0': !isCollapsibleOpen,
-            'h-auto w-auto': isCollapsibleOpen
-          }"
-        >
+  <div class="container mx-auto px-0">
+    <div class="items-center flex flex-wrap">
+      <div class="w-40 items-center md:w-4/12 ml-auto pr-2 flex flex-col">
+        <div class="md:pt-4">
           <div>
-            <div>
-              <div>
-                <div class="flex flex-row justify-start">
-                  <input
-                    #nameInput
-                    id="nameInput"
-                    type="text"
-                    [(ngModel)]="newName"
-                    class="border border-gray-400 rounded py-2 px-1 mt-4"
-                    placeholder="Add Name Here"
-                  />
-                  <button
-                    class="relative"
-                  >
-                    <input type="color" class="rounded-full h-10 w-10 py-2 px-1 mt-4" />
-                  </button>
-                  <button
-                    class="bg-gray-600 hover:bg-gray-800 text-white font-bold rounded pl-2 py-2 px-1 mt-4"
-                    (click)="addName(nameInput.value); nameInput.value = ''"
-                  >
-                  <i class="fa-solid fa-user-plus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="mt-2 max-h-64 overflow-y-scroll">
-                <h2 class="text-xl font-semibold mx-4"></h2>
-                <ul class="px-2">
-                  <li
-                    *ngFor="let name of names; let i = index"
-                    class="flex items-end justify-between"
-                  >
-                    <span
-                      class="border border-black-300 ml-1 rounded py-0 px-1"
-                      >{{ name }}</span
-                    >
-                    <div class="flex">
-                      <button
-                        class="hover:bg-blue-500 text-white-500 ml-1 border rounded py-0 px-1"
-                      >
-                        <input type="color" class="rounded-full h-5 w-5" />
-                      </button>
-                      <button
-                        class="hover:bg-blue-500 text-white-500 ml-1 border rounded py-0 px-1"
-                        (click)="editName(i)"
-                      >
-                        <i class="fa-solid fa-user-pen"></i>
-                      </button>
-                      <button
-                        class="hover:bg-red-600 text-white-500 ml-1 border rounded py-0 px-1"
-                        (click)="deleteName(i)"
-                      >
-                        <i class="fa-sharp fa-solid fa-trash"></i>
-                      </button>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+            <div *ngIf="randomQuestion">
+              <h2 class="text-5xl font-bold mx-4">Hey {{ selectedName }},</h2>
+              <p
+                class="text-stone-950 italics text-3xl font-bold ml-3 mt-6 mb-8"
+              >
+                {{ randomQuestion }}
+              </p>
             </div>
-          </div>
 
-          <!-- Add Names Form -->
-          <!-- <form class="p-4">
-            <label for="nameInput" class="block mb-2">Name:</label>
-            <input
-              type="text"
-              id="nameInput"
-              class="w-full px-3 py-2 mb-4 leading-tight border border-gray-300 rounded appearance-none focus:outline-none focus:shadow-outline"
-              placeholder="Enter a name"
-            />
             <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+              class="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded mx-4 ml-4"
+              (click)="getRandomQuestion()"
             >
-              Add
+              <i class="fa-solid fa-forward"></i>
+              Skip Question
             </button>
-          </form> -->
-        </div>
-      </div>
-    </div>
-    <div class="container mx-auto px-0">
-      <div class="items-center flex flex-wrap">
-        <div class="w-40 items-center md:w-4/12 ml-auto pr-2 flex flex-col">
-          <div class="md:pt-4">
-            <div>
-              <div *ngIf="randomQuestion">
-                <h2 class="text-5xl font-bold mx-4">Hey {{ selectedName }},</h2>
-                <p
-                  class="text-stone-950 italics text-3xl font-bold ml-3 mt-6 mb-8"
-                >
-                  {{ randomQuestion }}
-                </p>
-              </div>
-
-              <button
-                class="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded mx-4 ml-4"
-                (click)="getRandomQuestion()"
-              >
-                <i class="fa-solid fa-forward"></i>
-                Skip Question
-              </button>
-              <button
-                class="bg-gray-600 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mx-4 my-2"
-                (click)="spin()"
-              >
-                <i class="fa-solid fa-rotate"></i>
-                Spin
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="items-end md:w-5/12 ml-auto mr-auto pl-0">
-          <div class="relative flex flex-col min-w-0 w-full mb-6">
-            <ngx-wheel
-              #wheel
-              [width]="700"
-              [height]="700"
-              [width]="700"
-              [height]="700"
-              [spinDuration]="2"
-              [spinAmount]="30"
-              [items]="items"
-              [innerRadius]="30"
-              [textOrientation]="textOrientation"
-              [textAlignment]="textAlignment"
-              pointerStrokeColor="black"
-              pointerFillColor="gold"
-              [idToLandOn]="idToLandOn"
-              (onSpinStart)="before()"
-              (onSpinComplete)="after()"
-            ></ngx-wheel>
+            <button
+              class="bg-gray-600 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mx-4 my-2"
+              (click)="spin()"
+            >
+              <i class="fa-solid fa-rotate"></i>
+              Spin
+            </button>
           </div>
         </div>
       </div>
+      <div class="items-end md:w-5/12 ml-auto mr-auto pl-0">
+        <div class="relative flex flex-col min-w-0 w-full mb-6">
+          <ngx-wheel
+            #wheel
+            [width]="700"
+            [height]="700"
+            [width]="700"
+            [height]="700"
+            [spinDuration]="2"
+            [spinAmount]="30"
+            [items]="items"
+            [innerRadius]="30"
+            [textOrientation]="textOrientation"
+            [textAlignment]="textAlignment"
+            pointerStrokeColor="black"
+            pointerFillColor="gold"
+            [idToLandOn]="idToLandOn"
+            (onSpinStart)="before()"
+            (onSpinComplete)="after()"
+          ></ngx-wheel>
+        </div>
+      </div>
     </div>
-  </section>
-</main>
+  </div>
+</section>
