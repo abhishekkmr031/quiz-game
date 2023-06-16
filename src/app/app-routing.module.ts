@@ -10,7 +10,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'start', component: StartGameComponent },
   { path: 'wheelitemsmanagement', component: ManagementComponentComponent },
-  { path:'wheelgame', component: GameComponentComponent},
 ];
 
 @NgModule({
