@@ -4,8 +4,6 @@
   <i class="fa-sharp fa-light fa-gear-complex"></i>
 </button>
 <section class="relative py-20">
-  <div class="a circle1"></div>
-  <div class="a circle2"></div>
   <div class="flex">
     <div class="absolute">
       <!-- Collapsible Button -->
@@ -39,13 +37,13 @@
                 />
                 <button class="relative">
                   <input
-                    type="color"
+                    type="color" [(ngModel)]="color"
                     class="rounded-full h-10 w-10 py-2 px-1 mt-4"
                   />
                 </button>
                 <button
                   class="bg-gray-600 hover:bg-gray-800 text-white font-bold rounded pl-2 py-2 px-1 mt-4"
-                  (click)="addName(nameInput.value); nameInput.value = ''"
+                  (click)="AddWheelSegment(); nameInput.value = ''"
                 >
                   <i class="fa-solid fa-user-plus"></i>
                 </button>
@@ -55,18 +53,18 @@
               <h2 class="text-xl font-semibold mx-4"></h2>
               <ul class="px-2">
                 <li
-                  *ngFor="let name of names; let i = index"
+                  *ngFor="let name of wheelsegments; let i = index"
                   class="flex items-end justify-between"
                 >
                   <span
                     class="border border-black-300 ml-1 rounded py-0 px-1"
-                    >{{ name }}</span
+                    >{{ name.text }}</span
                   >
                   <div class="flex">
                     <button
                       class="hover:bg-blue-500 text-white-500 ml-1 border rounded py-0 px-1"
                     >
-                      <input type="color" class="rounded-full h-5 w-5" />
+                      <input type="color" class="rounded-full h-5 w-5" [value]="name.fillStyle" />
                     </button>
                     <button
                       class="hover:bg-blue-500 text-white-500 ml-1 border rounded py-0 px-1"
@@ -104,14 +102,14 @@
             </div>
 
             <button
-              class="bg-gray-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded mx-4 ml-4"
+              class="bg-gray-400 hover:bg-gray-500 text-black font-bold py-2 px-4 rounded mx-4 ml-4"
               (click)="getRandomQuestion()"
             >
               <i class="fa-solid fa-forward"></i>
               Skip Question
             </button>
             <button
-              class="bg-gray-600 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mx-4 my-2"
+              class="bg-gray-400 hover:bg-gray-500 text-black font-bold py-2 px-4 rounded mx-4 my-2"
               (click)="spin()"
             >
               <i class="fa-solid fa-rotate"></i>
@@ -120,17 +118,15 @@
           </div>
         </div>
       </div>
-      <div class="items-end md:w-5/12 ml-auto mr-auto pl-0">
+      <!-- <div class="items-end md:w-5/12 ml-auto mr-auto pl-0">
         <div class="relative flex flex-col min-w-0 w-full mb-6">
           <ngx-wheel
             #wheel
-            [width]="700"
-            [height]="700"
-            [width]="700"
-            [height]="700"
+            [width]=calcHeight
+            [height]=calcHeight
             [spinDuration]="2"
             [spinAmount]="30"
-            [items]="items"
+            [items]="wheelItems"
             [innerRadius]="30"
             [textOrientation]="textOrientation"
             [textAlignment]="textAlignment"
@@ -143,7 +139,11 @@
             pointerFillColor="#11114e"
           ></ngx-wheel>
         </div>
-      </div>
+      </div> -->
+      <canvas id="trianglePointer"></canvas>
+      <canvas id='myCanvas' width='880' height='300'>
+        Canvas not supported, use another browser.
+    </canvas>
     </div>
   </div>
 </section>
