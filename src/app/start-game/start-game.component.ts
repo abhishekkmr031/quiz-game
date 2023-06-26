@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { NgxWheelComponent, TextAlignment, TextOrientation } from 'ngx-wheel';
 import { Howl } from 'howler';
 
@@ -8,36 +8,10 @@ declare const Winwheel: any;
   selector: 'app-start-game',
   templateUrl: './start-game.component.html',
   styleUrls: ['./start-game.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StartGameComponent implements OnInit {
   @ViewChild(NgxWheelComponent, { static: false }) wheel!: NgxWheelComponent;
   @ViewChild('container') container!: ElementRef;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   calcHeight: number = 500;
@@ -98,20 +72,20 @@ export class StartGameComponent implements OnInit {
   ];
 
   wheelsegments = [
-    { 'fillStyle': '#eae56f', 'text': 'Prize One' },
-    { 'fillStyle': '#89f26e', 'text': 'Prize Two' },
-    { 'fillStyle': '#7de6ef', 'text': 'Prize Three' },
-    { 'fillStyle': '#e7706f', 'text': 'Prize Four' }
+    { 'fillStyle': '#eae56f', 'text': 'Ro Sieben' },
+    { 'fillStyle': '#89f26e', 'text': 'Nathan' },
+    { 'fillStyle': '#7de6ef', 'text': 'Danny' },
+    { 'fillStyle': '#e7706f', 'text': 'Bert' },
+    { 'fillStyle': '#ffd700', 'text': 'Kaushik' },
+    { 'fillStyle': '#ffa500', 'text': 'Bharatgouda' },
+    { 'fillStyle': '#857100', 'text': 'Akshay' },
+    { 'fillStyle': '#c54dda', 'text': 'Palvi' },
+    { 'fillStyle': '#adff2f', 'text': 'Eldin' }
   ];
 
-  AddWheelSegment(){
-    console.log(this.color);
-    this.wheelsegments.push({'fillStyle':this.color, 'text':this.newName});
-    this.addSegment(this.newName, this.color);
-  }
+  
   idToLandOn: any;
 
-  //@Input() item
   @Input() wheelItems: any[] = [];
   sound = new Howl({
     src: [
@@ -127,10 +101,12 @@ export class StartGameComponent implements OnInit {
   isCollapsibleOpen = false;
   newName!: string;
   color!:string;
+  nameIndex = -1;
+  winner:number = -1;
 
-  segments: number = 4;
+  segments: number = this.wheelsegments.length;
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor() { }
 
   theWheel: any;
   ngOnInit(): void {
@@ -140,46 +116,42 @@ export class StartGameComponent implements OnInit {
       'canvasId': 'myCanvas',
       'numSegments': this.segments,
       'fillStyle': '#e7706f',
-      'lineWidth': 3,
+      'lineWidth': 1,
       'textAlignment': 'outer',
       'textMargin': 15, // Specify text margin as a number.
-      'textOrientation': 'horizontal',    // Set orientation. horizontal, vertical, curved.
+      'textOrientation': 'curved',    // Set orientation. horizontal, vertical, curved.
       'textFontFamily': 'Courier',     // Monospace font best for vertical and curved.
       'textFontSize': 15,
-      'segments':
-        [
-          { 'fillStyle': '#eae56f', 'text': 'Prize One' },
-          { 'fillStyle': '#89f26e', 'text': 'Prize Two' },
-          { 'fillStyle': '#7de6ef', 'text': 'Prize Three' },
-          { 'fillStyle': '#e7706f', 'text': 'Prize Four' }
-        ],
+      'segments':this.wheelsegments,
 
       'animation':                   // Note animation properties passed in constructor parameters.
       {
         'type': 'spinToStop',  // Type of animation.
         'duration': 5,             // How long the animation is to take in seconds.
-        'spins': 8              // The number of complete 360 degree rotations the wheel is to do.
+        'spins': 5                // The number of complete 360 degree rotations the wheel is to do.
       }
     });
 
-    this.assignNames(this.names);
+   // this.assignNames(this.names);
   }
 
+  AddWheelSegment(){
+    if(this.nameIndex > -1){
+      console.log(this.nameIndex);
+      this.deleteSegment(this.nameIndex+1);
 
-  highlight(n: number) {
-    this.theWheel.segments[3].textFillStyle="blue";
-    this.theWheel.segments[3].textStrokeStyle = "blue";
-    this.theWheel.segments[3].strokeStyle = "blue";
-    //this.deleteSegment(3);
-    // this.addSegment(this.theWheel.segments[3]);
+      this.wheelsegments[this.nameIndex] = {'fillStyle':this.color, 'text':this.newName};
+      this.addSegment(this.newName, this.color);
+
+      this.nameIndex = -1; 
+    }
+    else{
+      this.wheelsegments.push({'fillStyle':this.color, 'text':this.newName});
+      this.addSegment(this.newName, this.color);
+    }    
   }
-
 
   addSegment(name:string, color:string) {
-    // Use a date object to set the text of each added segment to the current minutes:seconds
-    // (just to give each new segment a different label).
-    let date = new Date();
-
     // The Second parameter in the call to addSegment specifies the position,
     // in this case 1 meaning the new segment goes at the start of the wheel.
     this.theWheel.addSegment({
@@ -201,38 +173,63 @@ export class StartGameComponent implements OnInit {
     this.theWheel.draw();
   }
 
-  ngOnChanges() {
-    this.assignNames(this.names);
+  editName(id: any) {
+    this.newName = this.theWheel.segments[id+1].text;
+    this.color = this.theWheel.segments[id+1].fillStyle;
+    this.nameIndex = id;
   }
 
-  assignNames(array1: string[]) {
-    this.idToLandOn = Math.floor(Math.random() * this.names.length);
-    this.wheelItems = array1.map((value, index) => ({
-      fillStyle: this.colors[index % this.colors.length],
-      text: value,
-      id: index,
-      textFillStyle: 'black',
-      textFontSize: '22',
-    }));
-    this.cdr.detectChanges();
-  }
-
-  reset() {
-    this.wheel.reset();
+  deleteName(id: any) {
+    this.deleteSegment(id);
+    this.wheelsegments.splice(id, 1);
   }
 
   spin() {
 
+    this.resetWheel();
+    if(this.winner>-1) this.unhighlight(this.winner+1)
     this.theWheel.startAnimation();
 
-    this.highlight(4);
-
-    // this.removeName(this.idToLandOn);
-    // this.reset();
-    // this.idToLandOn = Math.floor(Math.random() * this.names.length);
-    // this.wheel.spin();
-    // this.randomQuestion = '';
+    this.winner = Math.floor(Math.random() * this.wheelsegments.length);
+    setTimeout(()=>{this.highlight(this.winner+1)},3500);
+    
   }
+
+  highlight(n: number) {
+    this.selectedName = this.wheelsegments[n-1].text;
+    console.log("highlight "+ n);
+    this.theWheel.segments[n].text=this.wheelsegments[n-1].text + "\n**";
+     this.theWheel.segments[n].textFillStyle="white";
+    // this.theWheel.segments[n].textStrokeStyle = "red";
+    // this.theWheel.segments[n].strokeStyle = "red";
+    this.theWheel.segments[n].fillStyle = "black";
+    //this.theWheel.segments[n].textFontSize = 25;
+    this.theWheel.segments[n].lineWidth = 1;
+    // this.addSegment(this.theWheel.segments[n-1].text, this.theWheel.segments[n-1].fillStyle)    
+  }
+
+  unhighlight(n:number){
+    console.log("unhighlight "+ n);
+    console.log(this.wheelsegments[n-1].text);
+    this.theWheel.segments[n].text=this.wheelsegments[n-1].text;
+    this.theWheel.segments[n].textFillStyle="black";
+    // this.theWheel.segments[n].textStrokeStyle = "";
+    // this.theWheel.segments[n].strokeStyle = "";
+    this.theWheel.segments[n].fillStyle = this.wheelsegments[n-1].fillStyle;
+    //this.theWheel.segments[n].textFontSize = 15;
+    this.theWheel.segments[n].lineWidth = 1;    
+  }
+
+  resetWheel()
+        {
+            this.theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+            this.theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+            this.theWheel.draw();                // Call draw to render changes to the wheel.
+
+            //this.theWheel.ctx.clearRect(0, 0, this.theWheel.canvas.width, this.theWheel.ctx.canvas.height);
+
+            //this.theWheel.wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+        }
 
   removeName(idToLandOn: any) {
     const removedName = this.names.splice(idToLandOn, 1)[0];
@@ -290,18 +287,26 @@ export class StartGameComponent implements OnInit {
     this.sound.unload();
     this.getRandomQuestion();
   }
-  editName(id: any) {
-    this.newName = this.names[id];
-    this.names.splice(id, 1)[0];
+  
+  ngOnChanges() {
     this.assignNames(this.names);
   }
 
-  deleteName(id: any) {
-    this.names.splice(id++, 1)[0];
-    this.assignNames(this.names);
-    this.reset();
+  assignNames(array1: string[]) {
     this.idToLandOn = Math.floor(Math.random() * this.names.length);
+    this.wheelItems = array1.map((value, index) => ({
+      fillStyle: this.colors[index % this.colors.length],
+      text: value,
+      id: index,
+      textFillStyle: 'black',
+      textFontSize: '22',
+    }));
   }
+
+  reset() {
+    this.wheel.reset();
+  }
+  
   addName(name: any) {
     //this.names.push(name);
     let name1: string[] = [...this.names]
